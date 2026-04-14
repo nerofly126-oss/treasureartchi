@@ -1,5 +1,6 @@
 import heroBanner from './assets/hero-banner.jpg'
 import './App.css'
+import { Analytics } from '@vercel/analytics/react'
 
 function App() {
   return (
@@ -63,6 +64,7 @@ function App() {
           </div>
         </div>
       </section>
+      <Analytics />
     </main>
   )
 }
