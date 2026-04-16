@@ -255,8 +255,21 @@
 .about-notes p {
   margin: 0;
   color: rgba(245, 243, 232, 0.82);
-  max-width: 26ch;
-  text-wrap: balance;
+  max-width: 40ch;
+  text-wrap: pretty;
+}
+
+.about-list {
+  margin: 0;
+  padding-left: 1.2rem;
+  color: rgba(245, 243, 232, 0.82);
+  display: grid;
+  gap: 10px;
+  max-width: 42ch;
+}
+
+.about-list li {
+  padding-left: 0.2rem;
 }
 
 .art-separator {
