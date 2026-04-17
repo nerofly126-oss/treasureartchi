@@ -11,6 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
+.venv/
+.venv_temp/
+*.tsbuildinfo
+.codex
+designs/
 
 # Editor directories and files
 .vscode/*
