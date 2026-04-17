@@ -31,7 +31,7 @@ export const featuredWorks: FeaturedArtworkItem[] = [
     medium: 'Oil on Canvas',
     dimensions: '2 x 3 ft',
     description:
-      'A symbolic composition shaped by time, growth, and reflection, bringing together memory, destiny, and inner witnessing.',
+      'A symbolic composition shaped by time, growth, and reflection, bringing together memory, destiny, and inner witnessing a brand new day.',
     image: getImageAsset('will-of-fate-and-time', undefined, 'Will of fate and time'),
     thumb: getImageAsset('will-of-fate-and-time', undefined, 'Will of fate and time'),
   },
