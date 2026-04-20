@@ -4,7 +4,8 @@ import About from './components/About'
 import ArtworkCarouselSection from './components/ArtworkCarouselSection'
 import Footer from './components/Footer'
 import Hero from './components/Hero'
-import { emailAddress, emailLink, whatsappLink } from './data/contact'
+import ScrollReveal from './components/ScrollReveal'
+import { emailAddresses, emailLink, emailLinks, whatsappLink } from './data/contact'
 import {
   abstractWorks,
   featuredWorks,
@@ -36,21 +37,26 @@ function App() {
       <Hero
         heroBanner={heroBanner}
         heroPortrait={heroPortrait}
-        emailAddress={emailAddress}
-        emailLink={emailLink}
+        emailAddresses={emailAddresses}
+        emailLinks={emailLinks}
       />
 
       <div className="zigzag-divider" aria-hidden="true"></div>
 
-      <About emailLink={emailLink} />
+      <About emailAddresses={emailAddresses} emailLinks={emailLinks} />
+
+      <section className="featured-works-intro" aria-labelledby="featured-works-heading">
+        <ScrollReveal className="featured-works-intro__inner" as="div" variant="fade-right">
+          <h2 id="featured-works-heading" className="featured-works-intro__title">
+            Featured Works
+          </h2>
+        </ScrollReveal>
+      </section>
 
       <ArtworkCarouselSection
         sectionClassName="featured featured-section"
         id="gallery"
-        index="01"
-        kicker="Painting Series"
-        title="Selected Paintings"
-        eyebrow="Featured Painting"
+        title="Painting Series"
         item={currentWork}
         isAnimating={featuredCarousel.isAnimating}
         direction={featuredCarousel.direction}
@@ -66,37 +72,9 @@ function App() {
       </div>
 
       <ArtworkCarouselSection
-        sectionClassName="abstracts featured-section"
-        id="abstract-drawings"
-        index="02"
-        kicker="Abstract Drawing Series"
-        title="Charcoal Studies"
-        eyebrow="Current Drawing"
-        item={currentAbstractWork}
-        isAnimating={abstractCarousel.isAnimating}
-        direction={abstractCarousel.direction}
-        previousLabel="Show previous abstract drawing"
-        nextLabel="Show next abstract drawing"
-        onPrevious={abstractCarousel.showPrevious}
-        onNext={abstractCarousel.showNext}
-        reverseLayout
-        stageClassName="abstract-stage"
-        cardClassName="abstract-main-card"
-        frameClassName="abstract-frame"
-        backgroundImage={africaBackground}
-      />
-
-      <div className="art-separator" aria-hidden="true">
-        <img src={dividerPattern} alt="" loading="lazy" decoding="async" />
-      </div>
-
-      <ArtworkCarouselSection
         sectionClassName="miniatures featured-section"
         id="miniature-paintings"
-        index="03"
-        kicker="Miniature Painting Series"
-        title="Small Format Works"
-        eyebrow="Miniature Feature"
+        title="Miniature Painting Series"
         item={currentMiniatureWork}
         isAnimating={miniatureCarousel.isAnimating}
         direction={miniatureCarousel.direction}
@@ -116,12 +94,31 @@ function App() {
       </div>
 
       <ArtworkCarouselSection
+        sectionClassName="abstracts featured-section"
+        id="abstract-drawings"
+        title="Abstract Art Series"
+        item={currentAbstractWork}
+        isAnimating={abstractCarousel.isAnimating}
+        direction={abstractCarousel.direction}
+        previousLabel="Show previous abstract drawing"
+        nextLabel="Show next abstract drawing"
+        onPrevious={abstractCarousel.showPrevious}
+        onNext={abstractCarousel.showNext}
+        reverseLayout
+        stageClassName="abstract-stage"
+        cardClassName="abstract-main-card"
+        frameClassName="abstract-frame"
+        backgroundImage={africaBackground}
+      />
+
+      <div className="art-separator" aria-hidden="true">
+        <img src={dividerPattern} alt="" loading="lazy" decoding="async" />
+      </div>
+
+      <ArtworkCarouselSection
         sectionClassName="sketchpads featured-section"
         id="sketch-pads"
-        index="04"
-        kicker="Sketch Pad Series"
-        title="Sketchbook Narratives"
-        eyebrow="Sketchbook Highlight"
+        title="Sketch Pad Series"
         item={currentSketchPadWork}
         isAnimating={sketchPadCarousel.isAnimating}
         direction={sketchPadCarousel.direction}

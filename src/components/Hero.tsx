@@ -3,11 +3,11 @@ import type { ImageAsset } from '../types/artwork'
 type HeroProps = {
   heroBanner: ImageAsset
   heroPortrait: string
-  emailAddress: string
-  emailLink: string
+  emailAddresses: readonly string[]
+  emailLinks: string[]
 }
 
-export default function Hero({ heroBanner, heroPortrait, emailAddress, emailLink }: HeroProps) {
+export default function Hero({ heroBanner, heroPortrait, emailAddresses, emailLinks }: HeroProps) {
   return (
     <section className='hero' id='home'>
       <div className='hero-panel'>
@@ -20,7 +20,7 @@ export default function Hero({ heroBanner, heroPortrait, emailAddress, emailLink
           </div>
 
           <div className='hero-copy-body'>
-            <p className='hero-kicker'>Actress. Storyteller. Artist</p>
+            <p className='hero-kicker'>Artist. Poet. Actress</p>
             <h1 className='hero-word'>
               <span>Treasure</span>
               <span>Artchi</span>
@@ -28,21 +28,17 @@ export default function Hero({ heroBanner, heroPortrait, emailAddress, emailLink
           </div>
 
           <div className='hero-copy-bottom'>
-            <nav className='hero-menu' aria-label='Primary'>
-              <a href='#about'>About</a>
-              <a href='#gallery'>Works</a>
-              <a href='#abstract-drawings'>Series</a>
-              <a href='#sketch-pads'>Contact</a>
-            </nav>
-
-            <a className='hero-email' href={emailLink}>
-              {emailAddress}
-            </a>
+            <div className='hero-email-list'>
+              {emailAddresses.map((email, index) => (
+                <a key={email} className='hero-email' href={emailLinks[index]}>
+                  {email}
+                </a>
+              ))}
+            </div>
           </div>
         </div>
 
         <div className='hero-image-panel'>
-          <div className='hero-image-overlay' aria-hidden='true'></div>
           <img
             src={heroPortrait}
             alt='Portrait of Treasure Artchi'

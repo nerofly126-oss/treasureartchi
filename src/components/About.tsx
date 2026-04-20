@@ -1,10 +1,11 @@
 import ScrollReveal from './ScrollReveal'
 
 type AboutProps = {
-  emailLink: string
+  emailAddresses: readonly string[]
+  emailLinks: string[]
 }
 
-export default function About({ emailLink }: AboutProps) {
+export default function About({ emailAddresses, emailLinks }: AboutProps) {
   return (
     <section className='about' id='about'>
       <ScrollReveal className='about-intro' as='div' variant='fade-right'>
@@ -39,9 +40,13 @@ export default function About({ emailLink }: AboutProps) {
         <ScrollReveal className='about-card about-card-location' as='article' delay={220} variant='fade-left'>
           <p className='about-card-label'>Based in</p>
           <p className='about-card-copy'>Nigeria — available for exhibitions, performances and collaborations.</p>
-          <a className='about-link' href={emailLink}>
-            Enquire via email
-          </a>
+          <div className='about-email-list'>
+            {emailAddresses.map((email, index) => (
+              <a key={email} className='about-link' href={emailLinks[index]}>
+                {email}
+              </a>
+            ))}
+          </div>
         </ScrollReveal>
       </div>
     </section>

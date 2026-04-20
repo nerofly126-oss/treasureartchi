@@ -4,5 +4,11 @@ export const whatsappMessage = encodeURIComponent(
 )
 export const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`
 
-export const emailAddress = 'ndukwetreasure1@gmail.com'
+export const emailAddresses = [
+  'ndukwetreasure1@gmail.com',
+  'treasureartchi@gmail.com',
+] as const
+
+export const emailAddress = emailAddresses[0]
 export const emailLink = `mailto:${emailAddress}`
+export const emailLinks = emailAddresses.map((email) => `mailto:${email}`)

@@ -9,6 +9,7 @@ export type UseCarouselResult = {
   isAnimating: boolean
   showPrevious: () => void
   showNext: () => void
+  showIndex: (index: number) => void
 }
 
 export const useCarousel = (length: number): UseCarouselResult => {
@@ -53,11 +54,11 @@ export const useCarousel = (length: number): UseCarouselResult => {
     animationTimeoutRef.current = window.setTimeout(() => {
       setIsAnimating(false)
       animationTimeoutRef.current = null
-    }, 900)
+    }, 520)
   }, [])
 
   const showPrevious = useCallback(() => {
-    if (safeLength <= 0) {
+    if (safeLength <= 0 || isAnimating) {
       return
     }
 
@@ -65,10 +66,10 @@ export const useCarousel = (length: number): UseCarouselResult => {
     setActiveIndex((currentIndex) =>
       currentIndex === 0 ? safeLength - 1 : currentIndex - 1
     )
-  }, [safeLength, triggerAnimation])
+  }, [isAnimating, safeLength, triggerAnimation])
 
   const showNext = useCallback(() => {
-    if (safeLength <= 0) {
+    if (safeLength <= 0 || isAnimating) {
       return
     }
 
@@ -76,7 +77,25 @@ export const useCarousel = (length: number): UseCarouselResult => {
     setActiveIndex((currentIndex) =>
       currentIndex === safeLength - 1 ? 0 : currentIndex + 1
     )
-  }, [safeLength, triggerAnimation])
+  }, [isAnimating, safeLength, triggerAnimation])
+
+  const showIndex = useCallback(
+    (index: number) => {
+      if (
+        safeLength <= 0 ||
+        isAnimating ||
+        index < 0 ||
+        index >= safeLength ||
+        index === activeIndex
+      ) {
+        return
+      }
+
+      triggerAnimation(index > activeIndex ? 'forward' : 'backward')
+      setActiveIndex(index)
+    },
+    [activeIndex, isAnimating, safeLength, triggerAnimation]
+  )
 
   return useMemo(
     () => ({
@@ -86,7 +105,8 @@ export const useCarousel = (length: number): UseCarouselResult => {
       isAnimating,
       showPrevious,
       showNext,
+      showIndex,
     }),
-    [activeIndex, direction, isAnimating, showNext, showPrevious]
+    [activeIndex, direction, isAnimating, showIndex, showNext, showPrevious]
   )
 }

@@ -1,6 +1,6 @@
 import type { ImageAsset } from '../types/artwork'
 
-const imageModules = import.meta.glob('../assets/*.{jpg,png}', {
+const imageModules = import.meta.glob('../assets/*.{jpg,jpeg,png,svg}', {
   eager: true,
   import: 'default',
 }) as Record<string, string>
@@ -43,5 +43,5 @@ export const heroBanner: ImageAsset = {
 }
 
 export const heroPortrait = getAsset('hero-portrait.jpg')
-export const dividerPattern = getAsset('patterns-borders.jpg')
+export const dividerPattern = getAsset('images7.jpeg')
 export const africaBackground = getAsset('africa.png')

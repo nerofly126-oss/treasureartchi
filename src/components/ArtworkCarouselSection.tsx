@@ -1,13 +1,11 @@
+import { useRef, type TouchEvent } from 'react'
 import ScrollReveal from './ScrollReveal'
-import type { ArtworkItem } from '../types/artwork'
+import type { ArtworkItem, FeaturedArtworkItem } from '../types/artwork'
 
 type ArtworkCarouselSectionProps = {
   sectionClassName: string
   id: string
-  index: string
-  kicker: string
   title: string
-  eyebrow: string
   item: ArtworkItem | null
   isAnimating?: boolean
   direction?: 'forward' | 'backward'
@@ -15,6 +13,9 @@ type ArtworkCarouselSectionProps = {
   nextLabel: string
   onPrevious: () => void
   onNext: () => void
+  thumbnails?: FeaturedArtworkItem[]
+  activeIndex?: number
+  onSelectItem?: (index: number) => void
   reverseLayout?: boolean
   stageClassName?: string
   cardClassName?: string
@@ -27,10 +28,7 @@ type ArtworkCarouselSectionProps = {
 export default function ArtworkCarouselSection({
   sectionClassName,
   id,
-  index,
-  kicker,
   title,
-  eyebrow,
   item,
   isAnimating = false,
   direction = 'forward',
@@ -58,6 +56,46 @@ export default function ArtworkCarouselSection({
     .filter(Boolean)
     .join(' ')
   const frameClasses = ['featured-frame', 'featured-editorial-frame', frameClassName].filter(Boolean).join(' ')
+  const touchStartXRef = useRef<number | null>(null)
+  const touchStartYRef = useRef<number | null>(null)
+
+  const resetTouchTracking = () => {
+    touchStartXRef.current = null
+    touchStartYRef.current = null
+  }
+
+  const handleTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0]
+
+    touchStartXRef.current = touch.clientX
+    touchStartYRef.current = touch.clientY
+  }
+
+  const handleTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    const startX = touchStartXRef.current
+    const startY = touchStartYRef.current
+
+    if (startX === null || startY === null) {
+      return
+    }
+
+    const touch = event.changedTouches[0]
+    const deltaX = touch.clientX - startX
+    const deltaY = touch.clientY - startY
+
+    resetTouchTracking()
+
+    if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) {
+      return
+    }
+
+    if (deltaX < 0) {
+      onNext()
+      return
+    }
+
+    onPrevious()
+  }
 
   return (
     <section className={`${sectionClassName} featured-section`} id={id}>
@@ -69,10 +107,8 @@ export default function ArtworkCarouselSection({
         ) : null}
 
         <ScrollReveal className='featured-header featured-section-header' as='div' variant='fade-right'>
-          <p className='featured-section-index'>{index}</p>
           <div className='featured-section-heading'>
-            <p className='featured-kicker'>{kicker}</p>
-            <h2>{title}</h2>
+            <h4>{title}</h4>
           </div>
         </ScrollReveal>
 
@@ -94,30 +130,6 @@ export default function ArtworkCarouselSection({
                   ←
                 </button>
 
-                <article key={item.title} className={cardClasses}>
-                  <div className='featured-card-copy'>
-                    <p className='featured-card-eyebrow'>{eyebrow}</p>
-                    <h3>{item.title}</h3>
-                    <p className='featured-card-description'>{item.description}</p>
-                  </div>
-                  <div className={frameClasses}>
-                    <img
-                      src={item.image.src}
-                      srcSet={item.image.srcSet}
-                      sizes={item.image.sizes}
-                      alt={item.title}
-                      className='featured-main-image'
-                      loading='lazy'
-                      decoding='async'
-                    />
-                  </div>
-                  <div className='featured-meta'>
-                    <p>{item.medium}</p>
-                    <span>{item.year}</span>
-                    <span>{item.dimensions}</span>
-                  </div>
-                </article>
-
                 <button
                   type='button'
                   className='featured-arrow featured-arrow-right'
@@ -126,11 +138,48 @@ export default function ArtworkCarouselSection({
                 >
                   →
                 </button>
+
+                <article key={item.title} className={cardClasses}>
+                  <div className='featured-card-topbar'>
+                  <div className='featured-card-copy'>
+                    <h3>{item.title}</h3>
+                    <p className='featured-card-description'>{item.description}</p>
+                  </div>
+                </div>
+
+                <div className='featured-card-gallery'>
+                  <div
+                    className='featured-card-spotlight'
+                    role='group'
+                    aria-label={`${title}. Swipe left or right on the artwork to browse.`}
+                    onTouchStart={handleTouchStart}
+                    onTouchEnd={handleTouchEnd}
+                    onTouchCancel={resetTouchTracking}
+                  >
+                    <div className={frameClasses}>
+                      <img
+                        src={item.image.src}
+                        srcSet={item.image.srcSet}
+                        sizes={item.image.sizes}
+                        alt={item.title}
+                        className='featured-main-image'
+                        loading='lazy'
+                        decoding='async'
+                      />
+                    </div>
+
+                    <div className='featured-meta'>
+                      <p>{item.medium}</p>
+                      <span>{item.year}</span>
+                      <span>{item.dimensions}</span>
+                    </div>
+                  </div>
+                </div>
+              </article>
               </>
             ) : (
               <article className={['featured-main-card', cardClassName, 'miniature-empty'].filter(Boolean).join(' ')}>
                 <div className='featured-card-copy'>
-                  <p className='featured-card-eyebrow'>{eyebrow}</p>
                   <h3>{emptyTitle}</h3>
                 </div>
                 <div

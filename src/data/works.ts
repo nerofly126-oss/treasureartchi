@@ -9,7 +9,7 @@ export const featuredWorks: FeaturedArtworkItem[] = [
     medium: 'Oil on Canvas',
     dimensions: '3 x 3 ft',
     description:
-      'A vivid meeting of fire and water, rendered through swirling movement, contrast, and emotional intensity.',
+      "A dance between two opposite but complementary energies, a fate of love's sacrifice and danger",
     image: getImageAsset('drink-and-burn', undefined, 'Drink and Burn'),
     thumb: getImageAsset('drink-and-burn', undefined, 'Drink and Burn'),
   },
@@ -20,7 +20,7 @@ export const featuredWorks: FeaturedArtworkItem[] = [
     medium: 'Oil on Canvas',
     dimensions: '2 x 3 ft',
     description:
-      'A luminous, heat-filled figure study that uses flowing lines and molten color to express inner force and presence.',
+      'Within every intense creative, the flames that ignite creativity and passion; beautiful but dangerous',
     image: getImageAsset('fiery-soul', undefined, 'Fiery Soul'),
     thumb: getImageAsset('fiery-soul', undefined, 'Fiery Soul'),
   },
@@ -42,7 +42,7 @@ export const featuredWorks: FeaturedArtworkItem[] = [
     medium: 'Oil on Canvas',
     dimensions: '2 x 3 ft',
     description:
-      'A contemplative studio scene that merges discipline and release, using light, motion, and symbolism to explore creative surrender.',
+      'A creative process that seems fiercely dominating or haunting; this is a revelation of the beauty and battle of Art',
     image: getImageAsset('strive-to-surrender', undefined, 'Strive to Surrender'),
     thumb: getImageAsset('strive-to-surrender', undefined, 'Strive to Surrender'),
   },
@@ -130,7 +130,7 @@ export const featuredWorks: FeaturedArtworkItem[] = [
     medium: 'Mixed media (Oil, acrylic, pastel and car paint) on Canvas',
     dimensions: '2 x 3 ft',
     description:
-      'A bustling market scene alive with movement, trade, and atmosphere, capturing the pulse of everyday communal life.',
+      'A bustling African market scene alive with movement, trade, and atmosphere, capturing the pulse of everyday communal life.',
     image: getImageAsset('hustle-and-bustle', undefined, 'Hustle and Bustle'),
     thumb: getImageAsset('hustle-and-bustle', undefined, 'Hustle and Bustle'),
   },
@@ -184,7 +184,7 @@ export const abstractWorks: ArtworkItem[] = [
     medium: 'Charcoal on paper',
     dimensions: '<A3',
     description:
-      'An expressive charcoal drawing filled with symbolic forms, prayerful tension, and layered spiritual reflection.',
+      'An expressive charcoal drawing filled with Uli symbols, prayerful tension and layered spiritual reflection.',
     image: getImageAsset('chukwu-biko', undefined, 'Chukwu biko'),
   },
   {
@@ -227,7 +227,7 @@ export const miniatureWorks: ArtworkItem[] = [
     medium: 'Acrylic on black embossed paper',
     dimensions: '20 x 24 inches',
     description:
-      'A luminous spiritual scene of water, presence, and ritual, rendered with glowing color against a dark embossed surface.',
+      'The vision of the captives during the historic Igbo landing experience of 1803',
     image: getImageAsset('mmuo-mmiri', undefined, 'Mmuo Mmiri'),
   },
   {
