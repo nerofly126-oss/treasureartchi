@@ -1,1 +1,1 @@
-to be edited later 
+a portfolio for an artist in the field of entertainment 
