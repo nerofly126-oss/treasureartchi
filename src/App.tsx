@@ -107,26 +107,6 @@ function App() {
       </div>
 
       <ArtworkCarouselSection
-        sectionClassName="performances featured-section"
-        id="performances"
-        title="Performances"
-        item={currentPerformanceWork}
-        items={performancesWorks}
-        activeIndex={performancesCarousel.activeItemIndex}
-        isAnimating={performancesCarousel.isAnimating}
-        direction={performancesCarousel.direction}
-        previousLabel="Show previous performance"
-        nextLabel="Show next performance"
-        onPrevious={performancesCarousel.showPrevious}
-        onNext={performancesCarousel.showNext}
-        stageClassName="performances-stage"
-      />
-
-      <div className="art-separator" aria-hidden="true">
-        <img src={dividerPattern} alt="" loading="lazy" decoding="async" />
-      </div>
-
-      <ArtworkCarouselSection
         sectionClassName="miniatures featured-section"
         id="miniature-paintings"
         title="Miniature Painting Series"
@@ -191,6 +171,26 @@ function App() {
         stageClassName="sketchpad-stage"
         cardClassName="sketchpad-main-card"
         frameClassName="sketchpad-frame"
+      />
+
+      <div className="art-separator" aria-hidden="true">
+        <img src={dividerPattern} alt="" loading="lazy" decoding="async" />
+      </div>
+
+      <ArtworkCarouselSection
+        sectionClassName="performances featured-section"
+        id="performances"
+        title="Performances"
+        item={currentPerformanceWork}
+        items={performancesWorks}
+        activeIndex={performancesCarousel.activeItemIndex}
+        isAnimating={performancesCarousel.isAnimating}
+        direction={performancesCarousel.direction}
+        previousLabel="Show previous performance"
+        nextLabel="Show next performance"
+        onPrevious={performancesCarousel.showPrevious}
+        onNext={performancesCarousel.showNext}
+        stageClassName="performances-stage"
       />
 
       <Footer
