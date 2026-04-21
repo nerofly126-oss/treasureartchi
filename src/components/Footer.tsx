@@ -124,7 +124,7 @@ export default function Footer({
 
           <div className='footer-social-wrap'>
             <a
-              href='https://instagram.com'
+              href='https://www.instagram.com/_treasure_artchi'
               className='footer-tag footer-tag-instagram'
               target='_blank'
               rel='noopener noreferrer'

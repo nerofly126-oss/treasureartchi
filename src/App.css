@@ -2374,26 +2374,57 @@
   }
 
   .certificates-hero {
-    padding: 24px 16px 18px;
+    padding: 20px 14px 14px;
   }
 
   .certificates-gallery {
-    padding: 4px 16px 44px;
+    padding: 0 14px 36px;
   }
 
   .certificates-hero__topbar {
     flex-direction: column;
     align-items: flex-start;
-    margin-bottom: 28px;
+    gap: 8px;
+    margin-bottom: 22px;
+  }
+
+  .certificates-hero__grid {
+    gap: 20px;
+  }
+
+  .certificates-hero__copy {
+    gap: 14px;
+    padding-top: 0;
   }
 
   .certificates-title {
-    font-size: clamp(2.6rem, 16vw, 4.8rem);
+    max-width: 100%;
+    font-size: clamp(2.35rem, 14vw, 4.2rem);
+    line-height: 0.88;
+  }
+
+  .certificates-intro {
+    max-width: 100%;
+    font-size: 0.95rem;
+    line-height: 1.72;
+  }
+
+  .certificates-lead {
+    gap: 14px;
+  }
+
+  .certificates-lead::before {
+    left: -10px;
+    top: 28px;
+    width: 44px;
+    height: 44px;
+    border-radius: 14px;
   }
 
   .certificates-lead__frame {
-    width: min(100%, 380px);
+    width: min(100%, 340px);
     padding: 9px;
+    justify-self: center;
     box-shadow:
       0 18px 34px rgba(65, 44, 23, 0.14),
       14px 16px 0 rgba(102, 69, 44, 0.07);
@@ -2401,8 +2432,60 @@
   }
 
   .certificates-lead__meta {
+    width: min(100%, 340px);
     margin-left: 0;
-    padding: 18px;
+    padding: 16px;
+    justify-self: center;
+  }
+
+  .certificates-gallery__header {
+    gap: 8px;
+    margin-bottom: 18px;
+  }
+
+  .featured-showcase,
+  .featured-stage,
+  .abstract-stage,
+  .performances-stage,
+  .miniature-stage,
+  .sketchpad-stage,
+  .featured-main-card,
+  .featured-editorial-card,
+  .featured-card-gallery,
+  .featured-card-spotlight {
+    justify-items: center;
+  }
+
+  .featured-stage,
+  .abstract-stage,
+  .performances-stage,
+  .miniature-stage,
+  .sketchpad-stage {
+    margin-inline: auto;
+  }
+
+  .featured-card-topbar,
+  .featured-card-copy,
+  .featured-meta {
+    width: min(100%, 560px);
+    margin-inline: auto;
+  }
+
+  .featured-frame,
+  .featured-editorial-frame,
+  .abstract-frame,
+  .miniature-frame,
+  .sketchpad-frame {
+    margin-inline: auto;
+  }
+
+  .certificates-masonry {
+    gap: 18px;
+  }
+
+  .certificate-card {
+    gap: 10px;
+    justify-items: center;
   }
 
   .certificate-card__image-wrap,
@@ -2414,12 +2497,9 @@
     transform: none;
   }
 
-  .certificate-card {
-    gap: 10px;
-  }
-
   .certificate-card__copy {
-    max-width: 21rem;
+    width: min(100%, 320px);
+    max-width: 100%;
     padding-left: 0;
     justify-self: center;
   }
@@ -2525,39 +2605,73 @@
       0 0 0 18px rgba(28, 28, 28, 0.02);
   }
 
+  .certificates-hero {
+    padding: 18px 12px 12px;
+  }
+
+  .certificates-gallery {
+    padding: 0 12px 30px;
+  }
+
+  .certificates-hero__topbar {
+    margin-bottom: 18px;
+  }
+
+  .certificates-hero__copy {
+    gap: 12px;
+  }
+
+  .featured-card-topbar,
+  .featured-card-copy,
+  .featured-meta {
+    width: min(100%, 272px);
+  }
+
   .certificates-intro,
   .certificates-lead__meta > p:last-of-type,
   .certificate-card__copy p {
-    font-size: 0.94rem;
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .certificates-lead::before {
+    display: none;
   }
 
   .certificates-lead__frame {
-    width: min(100%, 286px);
+    width: min(100%, 272px);
     padding: 7px;
+    transform: none;
   }
 
   .certificates-lead__frame::after {
-    width: 74px;
+    width: 68px;
     height: 18px;
     top: -10px;
-    right: 22px;
+    right: 18px;
   }
 
   .certificates-lead__meta {
-    max-width: 100%;
-    padding: 15px 14px;
+    width: 100%;
+    max-width: 272px;
+    padding: 14px 12px;
+  }
+
+  .certificates-lead__meta h2 {
+    font-size: clamp(1.2rem, 8vw, 1.55rem);
   }
 
   .certificate-card__image-wrap,
   .certificate-card-1 .certificate-card__image-wrap,
   .certificate-card-2 .certificate-card__image-wrap,
   .certificate-card-3 .certificate-card__image-wrap {
-    width: min(100%, 244px);
+    width: min(100%, 232px);
     padding: 7px;
   }
 
   .certificate-card__copy {
-    max-width: 16rem;
+    width: min(100%, 232px);
+    max-width: 100%;
   }
 
   .certificate-card__copy h3 {

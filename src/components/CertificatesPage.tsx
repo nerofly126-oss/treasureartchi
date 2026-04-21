@@ -29,10 +29,6 @@ export default function CertificatesPage({
           <ScrollReveal className='certificates-hero__copy' as='div' variant='fade-right'>
             <p className='certificates-eyebrow'>Collected milestones</p>
             <h1 className='certificates-title'>Paper trails of practice, discipline and recognition.</h1>
-            <p className='certificates-intro'>
-              An abstract archive of exhibitions, academic honours and performance recognition arranged like a studio
-              wall rather than a filing cabinet.
-            </p>
           </ScrollReveal>
 
           {leadCertificate ? (
@@ -44,7 +40,7 @@ export default function CertificatesPage({
                   sizes={leadCertificate.image.sizes}
                   alt={leadCertificate.image.alt}
                   className='certificates-lead__image'
-                  loading='eager'
+                  loading='lazy'
                   decoding='async'
                 />
               </div>
